@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CEBSA | Textos para prácticas</title>
+
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 780px;
+            margin: auto;
+            padding: 20px;
+            color: #142d42;
+        }
+
+        h1, h2 {
+            color: #086c78;
+        }
+
+        article {
+            border: 1px solid #b9ccd2;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        button {
+            background: #087c87;
+            color: white;
+            border: 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        pre {
+            font-family: inherit;
+            white-space: pre-wrap;
+            background: #f1f6f7;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        small {
+            color: #546674;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CEBSA | Textos para copiar</h1>
+
+    <p>
+        Material de práctica con datos simulados.
+        Se puede abrir en el navegador del teléfono si el instructor
+        comparte este archivo mediante un medio autorizado.
+        No envía información por sí mismo.
+    </p>
+
+    <article>
+        <h2>DOC-01 | Mensaje del proveedor</h2>
+
+        <pre id="d0">Buen día. Les aviso que el material que teníamos programado entregar el lunes no va a salir en la fecha acordada. Tuvimos un problema con el transporte. Nos comentan que posiblemente llegue el miércoles, pero todavía no está confirmado. En cuanto tenga información más precisa les aviso.</pre>
+
+        <button onclick="copy(0)">Copiar documento</button>
+    </article>
+
+    <article>
+        <h2>DOC-02 | Notas del supervisor</h2>
+
+        <pre id="d1">Hoy trabajamos seis personas. Avanzamos con las canalizaciones del área de producción, fueron 45 metros. En el almacén encontramos que una instalación existente interfiere con el recorrido previsto y no se pudo continuar en esa zona. Le avisé al encargado de obra. También llegó una parte del material, pero faltan algunos accesorios. Mañana seguiremos con las actividades que estén disponibles.</pre>
+
+        <button onclick="copy(1)">Copiar documento</button>
+    </article>
+
+    <article>
+        <h2>DOC-03 | Incidencia de campo</h2>
+
+        <pre id="d2">Durante la revisión del área de almacén, el personal detectó que el recorrido previsto para una canalización coincide con una instalación existente. Se suspendió el trabajo en el tramo afectado y se notificó al encargado de obra. Todavía no se ha definido una solución.</pre>
+
+        <button onclick="copy(2)">Copiar documento</button>
+    </article>
+
+    <article>
+        <h2>DOC-04 | Seguimiento de materiales</h2>
+
+        <pre id="d3">Entrega programada: lunes (incumplida). Fecha propuesta: miércoles (NO confirmada). Motivo comunicado: problema de transporte. Relación exacta de piezas afectadas: no disponible. Recepción parcial en obra: informada por supervisor, sin identificación que permita conciliarla con el pedido retrasado.</pre>
+
+        <button onclick="copy(3)">Copiar documento</button>
+    </article>
+
+    <article>
+        <h2>DOC-05 | Indicadores al corte</h2>
+
+        <pre id="d4">Duración prevista: 8 semanas. Semana actual: 3. Avance global programado al corte: 35 %. Avance global informado al corte: 30 %. Desviación: -5 puntos porcentuales. Incidencias abiertas documentadas: 1. Entregas pendientes con fecha no confirmada: 1.</pre>
+
+        <button onclick="copy(4)">Copiar documento</button>
+    </article>
+
+    <article>
+        <h2>DOC-06 | Solicitud de coordinación</h2>
+
+        <pre id="d5">Necesito que para nuestra próxima reunión tengamos claros los materiales que aún no llegan, la situación encontrada en el almacén y las actividades que pueden continuar. También necesito saber qué asuntos requieren autorización o información adicional. Por favor preparen un resumen breve para que podamos revisar los pendientes y asignar responsables.</pre>
+
+        <button onclick="copy(5)">Copiar documento</button>
+    </article>
+
+    <script>
+        function copy(i) {
+            let t = document.getElementById("d" + i).innerText;
+
+            navigator.clipboard.writeText(t)
+                .then(() => alert("Texto copiado"))
+                .catch(() => {
+                    let e = document.createElement("textarea");
+
+                    e.value = t;
+                    document.body.append(e);
+                    e.select();
+
+                    document.execCommand("copy");
+                    e.remove();
+
+                    alert("Texto copiado");
+                });
+        }
+    </script>
+
+    <small>
+        CEBSA-IA-001 • Caso didáctico ficticio •
+        No subir material confidencial a IA pública.
+    </small>
+</body>
+</html>
